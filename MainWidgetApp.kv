@@ -1,0 +1,70 @@
+ImageExample:
+<ImageExample@GridLayout>:
+    cols:3
+    Image:
+        source:"images/cake.jpg"
+    Image:
+        source:"images/cake.jpg"
+        allow_stretch:True
+    Image:
+        source:"images/cake.jpg"
+        # allow_stretch:True
+        keep_ratio:False
+
+        
+    
+
+
+
+<WidgetExample>:
+    cols: 3
+    ToggleButton:
+        text:"OFF"
+        on_state: root.onclick_toggle_button(self)
+        size_hint:None, 1
+        width:"100dp"
+    Button:
+        text:"Click here"
+        on_press:root.on_button_click()
+        disabled: not root.toggle_enable
+    Label:
+        text:root.my_text
+        font_name:"fonts/Lcd.ttf"
+        font_size:"20dp" 
+        color:1,.5,1,1
+    Switch:
+        id:switch_data
+        # on_active:root.on_switch_active(self)
+        size_hint:None, 1
+        width:"100dp"
+        active:True
+    Slider:
+        disabled:not switch_data.active
+        id:slider
+        min:0
+        max:100
+        orientation:"vertical"
+        # on_value: root.on_slider_value(self)
+    BoxLayout:
+        orientation:"vertical"
+        Label:
+            text:str(int(slider.value))
+        ProgressBar:
+            max:100
+            value:slider.value
+    TextInput:
+        id:input_text
+        size_hint:None, 1
+        width:"100dp"
+        text:"foo"
+        multiline:False
+        on_text_validate: root.input_text_validate(self)
+    Label:
+        text:"your name is :" + root.text_intput_str
+
+
+        
+            
+    
+
+        
